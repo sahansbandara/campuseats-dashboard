@@ -11,7 +11,11 @@ function MenuPage() {
     data: dishes,
     isLoading,
     error,
-  } = useFetch("/menu.json");
+  } = useFetch(
+    import.meta.env.VITE_API_URL
+      ? `${import.meta.env.VITE_API_URL}/api/menu`
+      : "/menu.json"
+  );
 
   if (isLoading) {
     return <p>Loading menu...</p>;
